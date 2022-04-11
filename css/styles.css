@@ -55,7 +55,7 @@ ul {
 }
 
 .container {
-	max-width: 1560px;
+	max-width: 1600px;
 	padding: 0 10px;
 	margin: 0 auto;
 }
@@ -191,9 +191,18 @@ ul {
 	background: transparent;
 	border: none;
 	cursor: pointer;
-	height: 30px;
+	height: 16px;
 	padding: 0;
 	display: none;
+	align-items: center;
+}
+
+.menu__toggle-text {
+	margin-right: 12px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #4d4763;
+	text-transform: uppercase;
 }
 
 .menu__lines {
@@ -201,16 +210,15 @@ ul {
 	border: none;
 	padding: 0;
 	z-index: 6;
+	width: 20px;
 }
 
 .menu__lines,
 .menu__lines:before,
 .menu__lines:after {
 	content: "";
-	height: 1.5px;
-	width: 32px;
-	border-radius: 3px;
-	background: #333;
+	height: 2px;
+	background: #6f6a80;
 	display: block;
 	transform: rotate(0);
 	transition: transform 0.3s, width 0.3s;
@@ -218,17 +226,27 @@ ul {
 
 .menu__lines:before {
 	position: absolute;
-	transform: translateY(-8px);
+	transform: translateY(-7px);
 	display: block;
-	right: 0;
+	left: 0;
+	width: 15px;
 }
 
 .menu__lines:after {
 	content: "";
 	position: absolute;
 	display: block;
-	transform: translateY(8px);
-	right: 0;
+	transform: translateY(7px);
+	left: 0;
+	width: 10px;
+}
+
+.menu__close {
+	position: fixed;
+	right: 15px;
+	top: 15px;
+	z-index: 9;
+	display: none;
 }
 
 .header__content {
@@ -298,6 +316,10 @@ ul {
 	padding: 0 110px 36px 130px;
 }
 
+.banner__mobile-header {
+	display: none;
+}
+
 .banner__inf {
 	margin-right: 20px;
 	padding-top: 64px;
@@ -326,6 +348,7 @@ ul {
 	padding: 25px 25px 68px;
 	width: 1560px;
 	user-select: none;
+	overflow: hidden;
 }
 
 .services__scrollbar {
@@ -380,6 +403,11 @@ ul {
 
 .service__img-box {
 	height: 55px;
+}
+
+.service__img {
+	max-height: 100%;
+	object-fit: contain;
 }
 
 .stages {
@@ -555,12 +583,14 @@ ul {
 
 .message__title {
 	max-width: 630px;
+	margin-right: 20px;
 	line-height: 1.15;
 	letter-spacing: -0.025em;
 }
 
 .message__btn {
 	margin-top: 20px;
+	flex: 0 0 auto;
 }
 
 .social-links__text {
@@ -649,7 +679,7 @@ ul {
 .callback-form__privacy {
 	margin-top: 30px;
 	font-weight: 300;
-	line-height: 1.4;
+	line-height: 1.875;
 	color: #4d4763;
 	letter-spacing: 0.025em;
 }
@@ -683,6 +713,7 @@ ul {
 
 .footer__menu {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .footer__menu-item:not(:last-child) {

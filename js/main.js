@@ -1,10 +1,13 @@
 const $menu = document.querySelector('.menu');
 if ($menu) {
   const $menuToggle = $menu.querySelector('.menu__toggle');
-
   $menuToggle.addEventListener('click', () => {
     $menu.classList.toggle('menu_active');
-    document.body.classList.toggle('body_lock');
+  });
+
+  const $menuClose = $menu.querySelector('.menu__close');
+  $menuClose.addEventListener('click', () => {
+    $menu.classList.remove('menu_active');
   });
 
   const $menuLinks = $menu.querySelectorAll('.menu__link');
@@ -24,8 +27,8 @@ if ($menu) {
 const swiper = new Swiper('.services__slider', {
   direction: 'horizontal',
   loop: false,
-  slidesPerView: 4,
-  spaceBetween: 50,
+  slidesPerView: 1,
+  spaceBetween: 10,
 
   pagination: {
     el: '.swiper-pagination',
@@ -33,8 +36,29 @@ const swiper = new Swiper('.services__slider', {
 
   scrollbar: {
     el: '.services__scrollbar',
-    dragSize: 410,
+    dragSize: 120,
   },
+
+  breakpoints: {
+    1600: {
+      spaceBetween: 50,
+      slidesPerView: 4,
+    },
+    1440: {
+      slidesPerView: 4,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+      scrollbar: {
+        dragSize: 410,
+      },
+    },
+    540: {
+      slidesPerView: 2,
+      spaceBetween: 10,
+    }
+  }
 });
 
 /**
@@ -44,7 +68,7 @@ const $anchors = document.querySelectorAll('a[href*="#"]');
 $anchors.forEach($anchor => {
   $anchor.addEventListener('click', e => {
     e.preventDefault();
-    
+
     const id = $anchor.getAttribute('href');
     if (id === '#') {
       return;
