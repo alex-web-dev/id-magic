@@ -10,17 +10,20 @@ if ($menu) {
     $menu.classList.remove('menu_active');
   });
 
-  const $menuLinks = $menu.querySelectorAll('.menu__link');
-  $menuLinks.forEach($link => {
-    $link.addEventListener('click', () => {
-      $menu.classList.toggle('menu_active');
-    });
-  });
-
   $menu.addEventListener('click', e => {
     if ($menu === e.target && $menu.classList.contains('menu_active')) {
       $menu.classList.remove('menu_active');
     }
+  });
+
+  const $menuHasChildrenLinks = document.querySelectorAll('.menu__item_has-children .menu__link');
+  $menuHasChildrenLinks.forEach($link => {
+    $link.addEventListener('click', e => {
+      e.preventDefault();
+
+      const $item = $link.closest('.menu__item');
+      $item.classList.toggle('menu__item_active');
+    });
   });
 }
 
